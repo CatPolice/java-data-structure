@@ -1,20 +1,18 @@
 package array;
 
-import java.util.Objects;
-
-public class Array<E> {
+public class RLArray<E> {
     private E[] data;
     //当前数组中有多少元素
     private int size;
 
     //无参构造函数
-    public Array() {
+    public RLArray() {
         this(10);
     }
 
     //构造函数，设置初始值，capacity容量
-    public Array(int capacity) {
-        data = (E[]) new Objects[capacity];
+    public RLArray(int capacity) {
+        data = (E[]) new Object[capacity];
         size = 0;
     }
 
@@ -75,11 +73,13 @@ public class Array<E> {
      * @date 2020/8/31 10:53 上午
      */
     public void add(int index, E e) {
-        if (size == data.length) {
-            throw new IllegalArgumentException("向数组中添加元素失败，数组已经满了");
-        }
+        //非法参数校验
         if (index > size || index < 0) {
             throw new IllegalArgumentException("向数组中添加元素失败，index > size or index < 0");
+        }
+        //如果当前数组容量已经满了的话，进行扩容操作
+        if (size == data.length) {
+            resize(2 * data.length);
         }
 
         for (int i = size - 1; i >= index; i--) {
@@ -168,6 +168,12 @@ public class Array<E> {
         }
         size--;
         data[size] = null;
+
+        //对数组中的元素进行重新分配空间
+        if (size == data.length / 4 && data.length / 2 != 0) {
+            resize(data.length / 2);
+        }
+
         return ret;
     }
 
@@ -208,7 +214,6 @@ public class Array<E> {
         }
     }
 
-
     @Override
     public String toString() {
         StringBuilder res = new StringBuilder();
@@ -224,5 +229,19 @@ public class Array<E> {
         return res.toString();
     }
 
+    /**
+     * @param
+     * @return 重新扩容数组
+     * @author RunLin
+     * @description
+     * @date 2020/9/1 1:30 下午
+     */
+    private void resize(int capacity) {
+        E[] newData = (E[]) new Object[capacity];
+        for (int i = 0; i < size; i++) {
+            newData[i] = data[i];
+        }
+        data = newData;
+    }
 
 }
