@@ -1,4 +1,5 @@
 import array.RLArray;
+import queue.RLLoopQueue;
 import queue.RLQueue;
 import stack.ArrayStack;
 
@@ -51,11 +52,32 @@ public class Main {
 
 
         //队列测试
-        RLQueue<Integer> queue = new RLQueue<>();
-        for (int i = 0; i < 10 ; i++){
+//        RLQueue<Integer> queue = new RLQueue<>();
+//        for (int i = 0; i < 10 ; i++){
+//            queue.enqueue(i);
+//            System.out.println(queue);
+//
+//            if (i % 3 == 0){
+//                queue.dequeue();
+//                System.out.println(queue);
+//            }
+//        }
+
+
+
+        RLLoopQueue<Integer> queue = new RLLoopQueue<>();
+        for (int i = 0; i < 5 ; i++){
             queue.enqueue(i);
         }
         System.out.println(queue);
+
+        queue.dequeue();
+        System.out.println(queue);
+        queue.dequeue();
+        System.out.println(queue);
+        queue.dequeue();
+        System.out.println(queue);
+
 
 
 
