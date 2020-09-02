@@ -105,6 +105,28 @@ public class RLArray<E> {
     }
 
     /**
+    * @author RunLin
+    * @param
+    * @description
+    * @date 2020/9/2 9:57 上午
+    * @return  获取数组中第一个元素
+    */
+    public E getFirst(){
+        return get(0);
+    }
+
+    /**
+    * @author RunLin
+    * @param
+    * @description
+    * @date 2020/9/2 9:58 上午
+    * @return  获取数组中最后一个元素
+    */
+    public E getLast(){
+        return get(size - 1);
+    }
+
+    /**
      * @param
      * @return 设置数组中的某一个元素
      * @author RunLin
