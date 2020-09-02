@@ -1,7 +1,10 @@
 import array.RLArray;
 import queue.RLLoopQueue;
 import queue.RLQueue;
+import queue.RLQueueInterface;
 import stack.ArrayStack;
+
+import java.util.Random;
 
 /**
  * @ClassName : Main
@@ -65,23 +68,46 @@ public class Main {
 
 
 
-        RLLoopQueue<Integer> queue = new RLLoopQueue<>();
-        for (int i = 0; i < 5 ; i++){
-            queue.enqueue(i);
+//        //测试循环队列
+//        RLLoopQueue<Integer> queue = new RLLoopQueue<>();
+//        for (int i = 0; i < 5 ; i++){
+//            queue.enqueue(i);
+//        }
+//        System.out.println(queue);
+//
+//        queue.dequeue();
+//        System.out.println(queue);
+//        queue.dequeue();
+//        System.out.println(queue);
+//        queue.dequeue();
+//        System.out.println(queue);
+
+
+
+            int count = 100000;
+            RLQueue<Integer> rlQueue = new RLQueue<>();
+            double time1 = testQueue(rlQueue,count);
+            System.out.println("RLQueue , time : " + time1 + " s");
+
+        RLLoopQueue<Integer> rlLoopQueue = new RLLoopQueue<>();
+        double time2 = testQueue(rlLoopQueue,count);
+        System.out.println("RLLoopQueue , time : " + time2 + " s");
+
+    }
+
+
+    public static double testQueue(RLQueueInterface<Integer> q, int count){
+        long startTime = System.nanoTime();
+        Random random = new Random();
+        for (int i = 0; i<count;i ++ ){
+            q.enqueue(random.nextInt(Integer.MAX_VALUE));
         }
-        System.out.println(queue);
 
-        queue.dequeue();
-        System.out.println(queue);
-        queue.dequeue();
-        System.out.println(queue);
-        queue.dequeue();
-        System.out.println(queue);
+        for (int i = 0; i<count ;i++){
+            q.dequeue();
+        }
 
-
-
-
-
-
+        long endTime = System.nanoTime();
+        return  (endTime - startTime) / 1000000000.0;
     }
 }
