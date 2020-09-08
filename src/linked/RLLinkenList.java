@@ -6,7 +6,7 @@ package linked;
  * @Author : RunLin
  * @Date: 2020-09-03 09:17
  */
-public class LinkenList<E> {
+public class RLLinkenList<E> {
     private class Node {
         public E e;
         public Node next;
@@ -37,7 +37,7 @@ public class LinkenList<E> {
     private Node dummyHead;
     private int size;
 
-    public LinkenList() {
+    public RLLinkenList() {
         dummyHead = new Node(null, null);
         size = 0;
     }

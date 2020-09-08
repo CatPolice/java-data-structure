@@ -1,9 +1,6 @@
-import array.RLArray;
-import linked.LinkenList;
-import queue.RLLoopQueue;
-import queue.RLQueue;
+import linked.RLLinkenList;
 import queue.RLQueueInterface;
-import stack.ArrayStack;
+import stack.RLLinkedListStack;
 
 import java.util.Random;
 
@@ -93,13 +90,21 @@ public class Main {
 //        System.out.println("RLLoopQueue , time : " + time2 + " s");
 
 
-        LinkenList<Integer> linkenList = new LinkenList<>();
-        for (int i = 0; i<5;i++){
-            linkenList.addFirst(i);
-            System.out.println(linkenList);
+//        RLLinkenList<Integer> linkenList = new RLLinkenList<>();
+//        for (int i = 0; i<5;i++){
+//            linkenList.addFirst(i);
+//            System.out.println(linkenList);
+//        }
+//        linkenList.add(2,666);
+//        System.out.println(linkenList);
+
+
+        RLLinkedListStack<Integer> stack = new RLLinkedListStack<>();
+        for (int i = 0; i<5 ; i++){
+            stack.push(i);
+            System.out.println(stack);
         }
-        linkenList.add(2,666);
-        System.out.println(linkenList);
+
     }
 
 

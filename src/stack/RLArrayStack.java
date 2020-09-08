@@ -8,15 +8,15 @@ import array.RLArray;
  * @Author : RunLin
  * @Date: 2020-09-02 09:50
  */
-public class ArrayStack<E> implements RLStackInterface<E> {
+public class RLArrayStack<E> implements RLStackInterface<E> {
 
     private RLArray<E> array;
 
-    public ArrayStack(int capacity) {
+    public RLArrayStack(int capacity) {
         array = new RLArray<>(capacity);
     }
 
-    public ArrayStack() {
+    public RLArrayStack() {
         array = new RLArray<>();
     }
 
